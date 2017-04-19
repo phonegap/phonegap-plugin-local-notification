@@ -1,5 +1,5 @@
 
-PLUGIN_NAME
+phonegap-plugin-local-notification
 ------------------------
 
-TODO: Describe what your plugin does, what platforms it supports, and how to use it.
+An implementation of the Web Notifications API for end-user notifications.
