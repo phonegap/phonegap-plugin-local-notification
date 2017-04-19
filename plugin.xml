@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://cordova.apache.org/ns/plugins/1.0"
+           id="phonegap-plugin-local-notification"
+      version="0.0.1">
+    <name>phonegap-plugin-local-notification</name>
+
+    <js-module src="www/notification.js" name="Notification">
+        <clobbers target="Notification" />
+    </js-module>
+
+
+    <!-- TODO: Uncomment this if you would like to add Android support -->
+    <!-- android -->
+    <!--
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Echo" >
+                <param name="android-package" value="org.apache.cordova.test.Echo"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/Echo.java" target-dir="src/org/apache/cordova/test" />
+    </platform>
+    -->
+
+    <!-- TODO: Uncomment this if you would like to add iOS support -->
+    <!-- ios -->
+    <!--
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="Echo">
+                <param name="ios-package" value="CDVEcho"/>
+            </feature>
+        </config-file>
+        <source-file src="src/ios/CDVEcho.m" />
+    </platform>
+    -->
+
+</plugin>

@@ -1,0 +1,41 @@
+/* global cordova:false */
+/* globals window */
+
+var argscheck = cordova.require('cordova/argscheck'),
+    exec = cordova.require('cordova/exec'),
+    utils = cordova.require('cordova/utils');
+
+var Notification = function(title, options) {
+    // require title parameter
+    if (typeof title === 'undefined') {
+        throw new Error('The title argument is required.');
+    }
+
+    options = options || {};
+    var getValue = argscheck.getValue;
+
+    this.permission = 'granted';
+    this.title = getValue(title, '');
+    this.dir = getValue(options.dir, 'auto');
+    this.lang = getValue(options.lang, '');
+    this.body = getValue(options.body, '');
+    this.tag = getValue(options.tag, '');
+    this.icon = getValue(options.icon, '');
+};
+
+Notification.requestPermission = function(callback) {
+    if (!callback) { callback = function() {}; }
+
+    if (typeof callback !== 'function')  {
+        console.log('Notification.requestPermission failure: callback parameter not a function');
+        return;
+    }
+
+    callback('granted');
+};
+
+Notification.prototype.close = function() {
+    // Does nothing
+};
+
+module.exports = Notification;
