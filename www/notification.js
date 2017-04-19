@@ -21,6 +21,12 @@ var Notification = function(title, options) {
     this.body = getValue(options.body, '');
     this.tag = getValue(options.tag, '');
     this.icon = getValue(options.icon, '');
+
+    exec(function() {
+        console.log('show success');
+    }, function() {
+        console.log('show error');
+    }, 'LocalNotifications', 'show', [this.title, this.dir, this.lang, this.body, this.tag, this.icon]);
 };
 
 Notification.requestPermission = function(callback) {
@@ -35,7 +41,11 @@ Notification.requestPermission = function(callback) {
 };
 
 Notification.prototype.close = function() {
-    // Does nothing
+    exec(function() {
+        console.log('close success');
+    }, function() {
+        console.log('close error');
+    }, 'LocalNotifications', 'close', [this.tag]);
 };
 
 module.exports = Notification;

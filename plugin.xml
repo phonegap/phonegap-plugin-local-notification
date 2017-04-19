@@ -10,19 +10,17 @@
     </js-module>
 
 
-    <!-- TODO: Uncomment this if you would like to add Android support -->
     <!-- android -->
-    <!--
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="Echo" >
-                <param name="android-package" value="org.apache.cordova.test.Echo"/>
+            <feature name="LocalNotifications" >
+                <param name="android-package" value="com.adobe.phonegap.notification.LocalNotifications"/>
             </feature>
         </config-file>
 
-        <source-file src="src/android/Echo.java" target-dir="src/org/apache/cordova/test" />
+        <source-file src="src/android/LocalNotifications.java" target-dir="src/com/adobe/phonegap/notification" />
+        <framework src="com.android.support:support-v13:23+"/>
     </platform>
-    -->
 
     <!-- TODO: Uncomment this if you would like to add iOS support -->
     <!-- ios -->
