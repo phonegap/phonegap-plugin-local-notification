@@ -37,7 +37,9 @@ Notification.requestPermission = function(callback) {
         return;
     }
 
-    callback('granted');
+    exec(callback, function() {
+        console.log('requestPermission error');
+    }, 'LocalNotifications', 'requestPermission', []);
 };
 
 Notification.prototype.close = function() {

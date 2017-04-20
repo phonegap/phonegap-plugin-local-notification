@@ -54,6 +54,8 @@ public class LocalNotifications extends CordovaPlugin {
             // @TODO fire close event
 
             callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, args.getString(0)));
+        } else if (action.equals("requestPermission")) {
+            callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, "granted"));
         } else {
             Log.d(TAG, "return false");
             return false;
