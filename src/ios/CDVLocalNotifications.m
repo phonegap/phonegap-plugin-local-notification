@@ -8,6 +8,39 @@
 
 @implementation CDVLocalNotifications
 
+- (void)show:(CDVInvokedUrlCommand*)command {
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+
+    UNMutableNotificationContent *content = [UNMutableNotificationContent new];
+    content.title = [command.arguments objectAtIndex:0];
+    content.body = [command.arguments objectAtIndex:3];
+
+    NSString *identifier = [command.arguments objectAtIndex:4];
+
+    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier content:content trigger:nil];
+
+    [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"Something went wrong: %@",error);
+            CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        } else {
+            CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        }
+    }];
+}
+
+- (void)close:(CDVInvokedUrlCommand*)command {
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+
+    NSArray *identifiers = @[[command.arguments objectAtIndex:0]];
+    [center removeDeliveredNotificationsWithIdentifiers:identifiers];
+
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
 - (void)requestPermission:(CDVInvokedUrlCommand*)command {
     UNAuthorizationOptions options = UNAuthorizationOptionAlert + UNAuthorizationOptionSound;
     UNUserNotificationCenter *center = UNUserNotificationCenter.currentNotificationCenter;
