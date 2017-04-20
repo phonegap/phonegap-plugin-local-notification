@@ -1,36 +1,37 @@
 {
-    "name": "phonegap-plugin-local-notification",
-    "description": "",
-    "version": "0.0.1",
-    "homepage": "",
-    "repository": {
-        "type": "git",
-        "url": ""
-    },
-    "bugs": {
-        "url": ""
-    },
-    "cordova": {
-        "id": "phonegap-plugin-local-notification",
-        "platforms": [
-            "ios",
-            "android",
-            "windows"
-        ]
-    },
-    "keywords": [
-        "ecosystem:cordova",
-        "ecosystem:phonegap"
-    ],
-    "engines":{
-        "cordova" : ">=3.0.0"
-    },
-    "author": "",
-    "license": "PLUGIN_LICENSE",
-    "scripts": {
-        "test": "jasmine-node --color spec"
-    },
-    "devDependencies": {
-        "jasmine-node": "1.14.5"
-    }
+  "name": "phonegap-plugin-local-notification",
+  "description": "",
+  "version": "0.0.1",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "cordova": {
+    "id": "phonegap-plugin-local-notification",
+    "platforms": [
+      "ios",
+      "android",
+      "windows"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "ecosystem:phonegap"
+  ],
+  "engines": {
+    "cordova": ">=3.0.0"
+  },
+  "author": "",
+  "license": "PLUGIN_LICENSE",
+  "scripts": {
+    "test": "jasmine-node --color spec"
+  },
+  "devDependencies": {
+    "jasmine-node": "1.14.5",
+    "pluginpub": "0.0.8"
+  }
 }
