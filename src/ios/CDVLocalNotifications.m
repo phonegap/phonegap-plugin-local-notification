@@ -15,6 +15,20 @@
     content.title = [command.arguments objectAtIndex:0];
     content.body = [command.arguments objectAtIndex:3];
 
+
+    NSString *image = [command.arguments objectAtIndex:5];
+    NSLog(@"image =  [%@]", image);
+
+    // get image
+    if ([image hasPrefix:@"http"]) {
+        NSURL *url = [NSURL URLWithString:image];
+        NSLog(@"URL not empty %@", url);
+        UNNotificationAttachment *attachment = [UNNotificationAttachment attachmentWithIdentifier:@"image" URL:url options:nil error:nil];
+        content.attachments = [NSArray arrayWithObjects:attachment, nil];
+    } else {
+        NSLog(@"URL empty");
+    }
+
     NSString *identifier = [command.arguments objectAtIndex:4];
 
     UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier content:content trigger:nil];
