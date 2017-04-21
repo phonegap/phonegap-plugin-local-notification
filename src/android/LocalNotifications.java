@@ -3,6 +3,7 @@ package com.adobe.phonegap.notification;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -12,7 +13,6 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.app.NotificationCompat;
@@ -31,6 +31,8 @@ public class LocalNotifications extends CordovaPlugin {
 
     private static final String TAG = "LocalNotifications";
 
+    private static CallbackContext notificationContext;
+
      /**
      * Executes the request and returns PluginResult.
      *
@@ -41,12 +43,17 @@ public class LocalNotifications extends CordovaPlugin {
     @SuppressLint("NewApi")
     public boolean execute(String action, final JSONArray args, final CallbackContext callbackContext) throws JSONException {
         Log.d(TAG, "in local notifications");
+
         if (action.equals("show")) {
             Log.d(TAG, "action show");
 
+            notificationContext = callbackContext;
+
             showNotification(args);
 
-            callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, "show"));
+            PluginResult result = new PluginResult(PluginResult.Status.OK, "show");
+            result.setKeepCallback(true);
+            notificationContext.sendPluginResult(result);
         } else if (action.equals("close")) {
             NotificationManager mNotificationManager = (NotificationManager) cordova.getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
             mNotificationManager.cancel(args.getString(0), 0);
@@ -72,10 +79,13 @@ public class LocalNotifications extends CordovaPlugin {
 
         Context context = cordova.getActivity();
 
-        PackageManager pm = context.getPackageManager();
-        Intent launchIntent = pm.getLaunchIntentForPackage(context.getApplicationContext().getPackageName());
+        Intent notificationIntent = new Intent(context, PushHandlerActivity.class);
+        notificationIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        notificationIntent.putExtra("tag", tag);
+
         int requestCode = new Random().nextInt();
-        PendingIntent contentIntent = PendingIntent.getActivity(context, requestCode, launchIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent contentIntent = PendingIntent.getActivity(context, requestCode, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
 
         // Build notifications
         NotificationCompat.Builder mBuilder =
@@ -110,5 +120,11 @@ public class LocalNotifications extends CordovaPlugin {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public static void fireClickEvent(String tag) {
+        PluginResult result = new PluginResult(PluginResult.Status.OK, "click");
+        result.setKeepCallback(true);
+        notificationContext.sendPluginResult(result);
     }
 }
