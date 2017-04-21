@@ -45,15 +45,13 @@ public class LocalNotifications extends CordovaPlugin {
             Log.d(TAG, "action show");
 
             showNotification(args);
-            // @TODO fire show event
 
-            callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, args.getString(0)));
+            callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, "show"));
         } else if (action.equals("close")) {
             NotificationManager mNotificationManager = (NotificationManager) cordova.getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
             mNotificationManager.cancel(args.getString(0), 0);
-            // @TODO fire close event
 
-            callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, args.getString(0)));
+            callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK));
         } else if (action.equals("requestPermission")) {
             callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, "granted"));
         } else {
