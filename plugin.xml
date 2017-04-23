@@ -31,10 +31,13 @@
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
             <feature name="LocalNotifications">
-                <param name="ios-package" value="CDVLocalNotifications"/>
+                <param name="ios-package" value="W3CLocalNotifications"/>
             </feature>
         </config-file>
-        <source-file src="src/ios/CDVLocalNotifications.m" />
+        <header-file src="src/ios/AppDelegate+LocalNotification.h" />
+        <source-file src="src/ios/AppDelegate+LocalNotification.m" />
+        <header-file src="src/ios/W3CLocalNotifications.h" />
+        <source-file src="src/ios/W3CLocalNotifications.m" />
     </platform>
 
 </plugin>

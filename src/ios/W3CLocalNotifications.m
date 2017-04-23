@@ -2,13 +2,15 @@
 @import UserNotifications;
 
 #import <Cordova/CDV.h>
+#import "W3CLocalNotifications.h"
 
-@interface CDVLocalNotifications : CDVPlugin
-@end
+@implementation W3CLocalNotifications : CDVPlugin
 
-@implementation CDVLocalNotifications
+@synthesize callbackId;
 
 - (void)show:(CDVInvokedUrlCommand*)command {
+    self.callbackId = command.callbackId;
+
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
 
     UNMutableNotificationContent *content = [UNMutableNotificationContent new];
@@ -54,6 +56,13 @@
             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
         }
     }];
+}
+
+- (void)notificationClicked {
+    NSLog(@"in plugin, local notification clicked");
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"click"];
+    [pluginResult setKeepCallbackAsBool:YES];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
 }
 
 @end
