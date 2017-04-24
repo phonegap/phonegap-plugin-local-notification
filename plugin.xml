@@ -1,43 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<plugin xmlns="http://cordova.apache.org/ns/plugins/1.0"
-           id="phonegap-plugin-local-notification"
-      version="0.0.1">
-    <name>phonegap-plugin-local-notification</name>
-
-    <js-module src="www/notification.js" name="Notification">
-        <clobbers target="Notification" />
-    </js-module>
-
-
-    <!-- android -->
-    <platform name="android">
-        <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="LocalNotifications" >
-                <param name="android-package" value="com.adobe.phonegap.notification.LocalNotifications"/>
-            </feature>
-        </config-file>
-
-        <config-file target="AndroidManifest.xml" parent="/manifest/application">
-           <activity android:name="com.adobe.phonegap.notification.NotificationHandlerActivity" android:exported="true" android:permission="${applicationId}.permission.PushHandlerActivity"/>
-         </config-file>
-
-         <source-file src="src/android/LocalNotifications.java" target-dir="src/com/adobe/phonegap/notification" />
-         <source-file src="src/android/NotificationHandlerActivity.java" target-dir="src/com/adobe/phonegap/notification" />
-        <framework src="com.android.support:support-v13:23+"/>
-    </platform>
-
-    <!-- ios -->
-    <platform name="ios">
-        <config-file target="config.xml" parent="/*">
-            <feature name="LocalNotifications">
-                <param name="ios-package" value="W3CLocalNotifications"/>
-            </feature>
-        </config-file>
-        <header-file src="src/ios/AppDelegate+LocalNotification.h" />
-        <source-file src="src/ios/AppDelegate+LocalNotification.m" />
-        <header-file src="src/ios/W3CLocalNotifications.h" />
-        <source-file src="src/ios/W3CLocalNotifications.m" />
-    </platform>
-
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<plugin xmlns="http://cordova.apache.org/ns/plugins/1.0" id="phonegap-plugin-local-notification" version="1.0.0">
+  <name>phonegap-plugin-local-notification</name>
+  <js-module src="www/notification.js" name="Notification">
+    <clobbers target="Notification"/>
+  </js-module>
+  <platform name="android">
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="LocalNotifications">
+        <param name="android-package" value="com.adobe.phonegap.notification.LocalNotifications"/>
+      </feature>
+    </config-file>
+    <config-file target="AndroidManifest.xml" parent="/manifest/application">
+      <activity android:name="com.adobe.phonegap.notification.NotificationHandlerActivity" android:exported="true" android:permission="${applicationId}.permission.PushHandlerActivity"/>
+    </config-file>
+    <source-file src="src/android/LocalNotifications.java" target-dir="src/com/adobe/phonegap/notification"/>
+    <source-file src="src/android/NotificationHandlerActivity.java" target-dir="src/com/adobe/phonegap/notification"/>
+    <framework src="com.android.support:support-v13:23+"/>
+  </platform>
+  <platform name="ios">
+    <config-file target="config.xml" parent="/*">
+      <feature name="LocalNotifications">
+        <param name="ios-package" value="W3CLocalNotifications"/>
+      </feature>
+    </config-file>
+    <header-file src="src/ios/AppDelegate+LocalNotification.h"/>
+    <header-file src="src/ios/W3CLocalNotifications.h"/>
+    <source-file src="src/ios/AppDelegate+LocalNotification.m"/>
+    <source-file src="src/ios/W3CLocalNotifications.m"/>
+  </platform>
 </plugin>
