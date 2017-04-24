@@ -2,13 +2,13 @@
   "name": "phonegap-plugin-local-notification",
   "description": "",
   "version": "0.0.1",
-  "homepage": "",
+  "homepage": "http://github.com/phonegap/phonegap-plugin-local-notification#readme",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "http://github.com/phonegap/phonegap-plugin-local-notification.git"
   },
   "bugs": {
-    "url": ""
+    "url": "http://github.com/phonegap/phonegap-plugin-local-notification/issues"
   },
   "cordova": {
     "id": "phonegap-plugin-local-notification",
@@ -25,8 +25,8 @@
   "engines": {
     "cordova": ">=3.0.0"
   },
-  "author": "",
-  "license": "PLUGIN_LICENSE",
+  "author": "Adobe PhoneGap Team",
+  "license": "MIT",
   "scripts": {
     "build": "npm run build:docs && npm test",
     "build:docs": "jsdoc2md www/notification.js > docs/api.md",
@@ -35,6 +35,6 @@
   "devDependencies": {
     "jasmine-node": "1.14.5",
     "jsdoc-to-markdown": "^3.0.0",
-    "pluginpub": "0.0.8"
+    "pluginpub": "^0.0.8"
   }
 }
