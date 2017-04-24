@@ -28,10 +28,13 @@
   "author": "",
   "license": "PLUGIN_LICENSE",
   "scripts": {
+    "build": "npm run build:docs && npm test",
+    "build:docs": "jsdoc2md www/notification.js > docs/api.md",
     "test": "jasmine-node --color spec"
   },
   "devDependencies": {
     "jasmine-node": "1.14.5",
+    "jsdoc-to-markdown": "^3.0.0",
     "pluginpub": "0.0.8"
   }
 }
