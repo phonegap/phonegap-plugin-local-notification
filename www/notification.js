@@ -5,6 +5,12 @@ var argscheck = cordova.require('cordova/argscheck'),
     exec = cordova.require('cordova/exec'),
     utils = cordova.require('cordova/utils');
 
+/**
+ *  @description A global object that lets you interact with the Notification API.
+ *  @global
+ *  @param {!string} title of the local notification.
+ *  @param {?Options} options An object containing optional property/value pairs.
+ */
 var Notification = function(title, options) {
     // require title parameter
     if (typeof title === 'undefined') {
@@ -47,6 +53,12 @@ var Notification = function(title, options) {
     exec(success, failure, 'LocalNotifications', 'show', [this.title, this.dir, this.lang, this.body, this.tag, this.icon]);
 };
 
+/**
+  * @description requests permission from the user to show a local notification.
+  * @function requestPermission
+  * @memberof Notification
+  * @param {!callback} callback - See type definition.
+  */
 Notification.requestPermission = function(callback) {
     if (!callback) { callback = function() {}; }
 
@@ -60,6 +72,11 @@ Notification.requestPermission = function(callback) {
     }, 'LocalNotifications', 'requestPermission', []);
 };
 
+/**
+  * @description closes an open notification.
+  * @function close
+  * @memberof Notification
+  */
 Notification.prototype.close = function() {
     var that = this;
     exec(function() {
@@ -68,5 +85,21 @@ Notification.prototype.close = function() {
         that.onerror();
     }, 'LocalNotifications', 'close', [this.tag]);
 };
+
+/**
+ * @description A callback to be used when the requestPermission method returns a value.
+ *
+ * @callback callback
+ * @param {string} permission - one of "default", "denied" or "granted"
+ */
+
+/*
+ * @typedef {Object} Options - An object for configuring Notification behavior.
+ * @property {string} [dir='auto'] - Sets the direction of the notification. One of "auto", "ltr" or "rtl"
+ * @property {string} [lang=''] - Sets the language of the notification
+ * @property {string} [body=''] - Sets the body of the notification
+ * @property {string} [tag=''] - Sets the identifying tag of the notification
+ * @property {string} [icon=''] - Sets the icon of the notification
+ */
 
 module.exports = Notification;
