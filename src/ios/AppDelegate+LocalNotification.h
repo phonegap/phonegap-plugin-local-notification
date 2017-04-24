@@ -8,6 +8,5 @@
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification;
 
 @property (nonatomic, retain) NSDictionary  *launchNotification;
-@property (nonatomic, retain) NSNumber  *coldstart;
 
 @end
