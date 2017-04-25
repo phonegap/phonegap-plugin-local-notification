@@ -79,7 +79,7 @@ public class LocalNotifications extends CordovaPlugin {
 
         Context context = cordova.getActivity();
 
-        Intent notificationIntent = new Intent(context, PushHandlerActivity.class);
+        Intent notificationIntent = new Intent(context, NotificationHandlerActivity.class);
         notificationIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         notificationIntent.putExtra("tag", tag);
 
