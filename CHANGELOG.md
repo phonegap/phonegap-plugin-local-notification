@@ -1,5 +1,13 @@
 # Change Log
 
+## [v1.0.1](https://github.com/phonegap/phonegap-plugin-local-notification/tree/v1.0.1) (2017-04-25)
+[Full Changelog](https://github.com/phonegap/phonegap-plugin-local-notification/compare/v1.0.0...v1.0.1)
+
+- 1.0.1 [view commit](http://github.com/phonegap/phonegap-plugin-local-notification/commit/d2552f8e71f6050f05ebfe4bef702970a5237da3)
+- :bookmark: Bumping plugin version to 1.0.1 [view commit](http://github.com/phonegap/phonegap-plugin-local-notification/commit/c8815608e1d6273442e881aaa21802b8c46a1d4d)
+- :bug::penguin: Fix activity name [view commit](http://github.com/phonegap/phonegap-plugin-local-notification/commit/93af1a3cfd5f0fc52d41adcca55ba711e93c51af)
+- Updating CHANGELOG [view commit](http://github.com/phonegap/phonegap-plugin-local-notification/commit/727aa00c3536dd8ac059d332de836dcecf8205bf)
+
 ## [v1.0.0](https://github.com/phonegap/phonegap-plugin-local-notification/tree/v1.0.0) (2017-04-24)
 [Full Changelog](https://github.com/phonegap/phonegap-plugin-local-notification/compare/v0.0.1...v1.0.0)
 
