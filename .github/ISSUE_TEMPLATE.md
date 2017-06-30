@@ -6,7 +6,7 @@
 
 #### Steps to Reproduce
 
-#### Platform and Version (eg. Android 5.0 or iOS 9.2.1)
+#### Platform and Version (e.g. Android 5.0 or iOS 9.2.1)
 
 #### (Android) What device vendor (e.g. Samsung, HTC, Sony...)
 
