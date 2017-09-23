@@ -21,8 +21,7 @@ $ cordova plugin add phonegap-plugin-local-notification
 ```
 
 ## Usage
-The plugin and complete documentation are available for download here in the PhoneGap Repo.
-To show a new local notification add this code to your application’s JavaScript:
+Please read through the [full API documentation here](https://github.com/phonegap/phonegap-plugin-local-notification/blob/master/docs/api.md). To show a new local notification add this code to your application’s JavaScript:
 
 ```js
 if (“Notification” in window) {
